@@ -12,7 +12,7 @@ import java.util.Objects;
 
 @Entity
 public class Task implements Parcelable {
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
     public int id;
 
     @ColumnInfo(name = "text")

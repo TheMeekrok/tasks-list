@@ -10,11 +10,13 @@ import androidx.room.Update;
 
 import com.kurpas.tasks.models.Task;
 
+import java.util.List;
+
 @Dao
 public interface TaskDao {
 
     @Query("SELECT * FROM task")
-    LiveData<Task> getAllTasksLive();
+    LiveData<List<Task>> getAllTasksLive();
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void addTask(Task task);
