@@ -27,6 +27,8 @@ public class Task implements Parcelable {
     @ColumnInfo(name = "list_id")
     public int listId;
 
+    public Task() {}
+
     protected Task(Parcel in) {
         id = in.readInt();
         text = in.readString();

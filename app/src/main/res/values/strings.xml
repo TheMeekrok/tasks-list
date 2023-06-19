@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">tasks</string>
+
+    <string name="enter_task_text">Введите текст задачи</string>
+    <string name="create_task_title">Задача</string>
+    <string name="create_task_button">Сохранить</string>
+    <string name="delete">Удалить</string>
 </resources>
