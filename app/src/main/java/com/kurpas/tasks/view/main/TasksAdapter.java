@@ -29,11 +29,11 @@ public class TasksAdapter extends RecyclerView.Adapter<TasksAdapter.TaskViewHold
             @Override
             public int compare(Task o1, Task o2) {
                 if (o1.isDone && !o2.isDone) {
-                    return -1;
+                    return 1;
                 }
 
                 if (!o1.isDone && o2.isDone) {
-                    return 1;
+                    return -1;
                 }
 
                 return (int) (o2.timestamp - o1.timestamp);

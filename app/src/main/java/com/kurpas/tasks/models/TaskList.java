@@ -10,7 +10,7 @@ import androidx.room.PrimaryKey;
 
 import java.util.Objects;
 
-@Entity
+@Entity(tableName = "task_list")
 public class TaskList implements Parcelable {
     @PrimaryKey(autoGenerate = true)
     public int id;
