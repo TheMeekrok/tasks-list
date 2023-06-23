@@ -60,7 +60,6 @@ public class CreateTaskActivity extends AppCompatActivity {
                 App.getInstance().getTaskDao().addTask(task);
             }
 
-            editText.setText("sdfdsfsdf");
             finish();
         });
 
