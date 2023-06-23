@@ -21,7 +21,7 @@ public class CreateTaskActivity extends AppCompatActivity {
 
     Task task;
     EditText editText;
-    Button saveTaskButton;
+    Button saveTaskButton, deleteTaskButton;
 
     public static void start(Activity caller, Task task) {
         Intent intent = new Intent(caller, CreateTaskActivity.class);
@@ -60,6 +60,12 @@ public class CreateTaskActivity extends AppCompatActivity {
                 App.getInstance().getTaskDao().addTask(task);
             }
 
+            finish();
+        });
+
+        deleteTaskButton = findViewById(R.id.deleteTaskButton);
+        deleteTaskButton.setOnClickListener(view -> {
+            App.getInstance().getTaskDao().deleteTask(task);
             finish();
         });
 

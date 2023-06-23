@@ -100,9 +100,6 @@ public class TasksAdapter extends RecyclerView.Adapter<TasksAdapter.TaskViewHold
         TextView taskText;
         boolean isInitState;
         CheckBox toggleCompletedCheckBox;
-
-        Button deleteTaskButton;
-
         Task task;
 
         public TaskViewHolder(@NonNull View itemView) {
@@ -122,11 +119,6 @@ public class TasksAdapter extends RecyclerView.Adapter<TasksAdapter.TaskViewHold
                 }
 
                 updateStrokeOut();
-            });
-
-            deleteTaskButton = itemView.findViewById(R.id.deleteTaskButton);
-            deleteTaskButton.setOnClickListener(view -> {
-                App.getInstance().getTaskDao().deleteTask(task);
             });
         }
 

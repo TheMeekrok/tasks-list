@@ -25,28 +25,13 @@ import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
 
-    private RecyclerView recyclerView;
     private Button addTaskButton;
-    private TabLayout tasksListTabs;
     private ViewPager viewPager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        recyclerView = findViewById(R.id.tasksView);
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(
-                this,
-                RecyclerView.VERTICAL,
-                false
-        );
-
-        recyclerView.setLayoutManager(linearLayoutManager);
-        recyclerView.addItemDecoration(new DividerItemDecoration(
-                this,
-                DividerItemDecoration.HORIZONTAL
-        ));
 
         addTaskButton = findViewById(R.id.addTaskButton);
         addTaskButton.setOnClickListener(view -> {
@@ -55,17 +40,6 @@ public class MainActivity extends AppCompatActivity {
 
         initToolbar();
         initTabLayout();
-
-        TasksAdapter adapter = new TasksAdapter();
-        recyclerView.setAdapter(adapter);
-
-        MainViewModel mainViewModel = new ViewModelProvider(this).get(MainViewModel.class);
-        mainViewModel.getListLiveData().observe(this, new Observer<List<Task>>() {
-            @Override
-            public void onChanged(List<Task> tasks) {
-                adapter.setItems(tasks);
-            }
-        });
     }
 
     private void initToolbar() {
@@ -75,27 +49,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initTabLayout() {
-        tasksListTabs = findViewById(R.id.tasksListTabs);
+        TasksListAdapter tasksListAdapter = new TasksListAdapter(getSupportFragmentManager());
+
         viewPager = findViewById(R.id.viewPager);
-
-        tasksListTabs.setupWithViewPager(viewPager);
-//        viewPager.adap
-
-        tasksListTabs.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
-            @Override
-            public void onTabSelected(TabLayout.Tab tab) {
-                int tabsCount = tasksListTabs.getTabCount();
-                if (tab.getPosition() == 1) {
-                    TabLayout.Tab newTab = tasksListTabs.newTab()
-                            .setText(String.format("Список %s", tabsCount - 1));
-                    tasksListTabs.addTab(newTab);
-                    tasksListTabs.selectTab(newTab);
-                }
-            }
-            @Override
-            public void onTabUnselected(TabLayout.Tab tab) {}
-            @Override
-            public void onTabReselected(TabLayout.Tab tab) {}
-        });
+        viewPager.setAdapter(tasksListAdapter);
+        viewPager.setCurrentItem(0);
     }
 }
