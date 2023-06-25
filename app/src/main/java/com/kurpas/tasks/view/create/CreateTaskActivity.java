@@ -3,7 +3,6 @@ package com.kurpas.tasks.view.create;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
@@ -41,7 +40,7 @@ public class CreateTaskActivity extends AppCompatActivity {
 
         initToolbar();
 
-        editText = findViewById(R.id.taskText);
+        editText = findViewById(R.id.taskListText);
 
         saveTaskButton = findViewById(R.id.saveTaskButton);
         saveTaskButton.setOnClickListener(view -> {
@@ -81,8 +80,6 @@ public class CreateTaskActivity extends AppCompatActivity {
     private void initToolbar() {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setHomeButtonEnabled(true);
         setTitle(R.string.create_task_title);
     }
 }

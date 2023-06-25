@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -23,6 +23,15 @@ import java.util.List;
 public class TaskListFragment extends Fragment {
     private RecyclerView recyclerView;
 
+    public static TaskListFragment newInstance(String title) {
+        TaskListFragment taskListFragment = new TaskListFragment();
+        Bundle args = new Bundle();
+        args.putString("title", title);
+        taskListFragment.setArguments(args);
+
+        return taskListFragment;
+    }
+
     @Nullable
     @Override
     public View onCreateView(
@@ -30,6 +39,8 @@ public class TaskListFragment extends Fragment {
             @Nullable ViewGroup container,
             @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.task_list_fragment, container, false);
+
+        Toast.makeText(getContext(), savedInstanceState.getString("title"), Toast.LENGTH_SHORT).show();
 
         recyclerView = view.findViewById(R.id.tasksRecycler);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(

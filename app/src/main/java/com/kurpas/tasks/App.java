@@ -31,6 +31,7 @@ public class App extends Application {
                 .build();
 
         taskDao = appDatabase.taskDao();
+        taskListDao = appDatabase.taskListDao();
     }
 
     public AppDatabase getAppDatabase() {

@@ -5,7 +5,6 @@ import android.graphics.Paint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.TextView;
 
@@ -105,7 +104,7 @@ public class TasksAdapter extends RecyclerView.Adapter<TasksAdapter.TaskViewHold
         public TaskViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            taskText = itemView.findViewById(R.id.taskText);
+            taskText = itemView.findViewById(R.id.taskListText);
 
             itemView.setOnClickListener(view -> {
                 CreateTaskActivity.start((Activity) itemView.getContext(), task);
